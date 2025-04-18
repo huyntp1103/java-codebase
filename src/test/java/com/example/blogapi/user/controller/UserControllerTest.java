@@ -60,7 +60,7 @@ public class UserControllerTest {
     void registerUser_ShouldReturnCreatedUser() throws Exception {
         when(userService.registerUser(any(UserRegistrationDto.class))).thenReturn(sampleUserResponse);
 
-        mockMvc.perform(post("/api/users")
+        mockMvc.perform(post("/api/users/register")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(sampleRegistrationRequest)))
                 .andExpect(status().isCreated())
