@@ -1,5 +1,6 @@
 package com.example.blogapi.user.controller;
 
+import com.example.blogapi.common.security.jwt.JwtTokenProvider;
 import com.example.blogapi.user.dto.UserRegistrationDto;
 import com.example.blogapi.user.dto.UserResponseDto;
 import com.example.blogapi.user.service.UserService;
@@ -10,6 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.MediaType;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -30,6 +32,12 @@ public class UserControllerTest {
     @Mock
     private UserService userService;
 
+    @Mock
+    private AuthenticationManager authenticationManager;
+
+    @Mock
+    private JwtTokenProvider jwtTokenProvider;
+
     private ObjectMapper objectMapper = new ObjectMapper();
 
     private UserResponseDto sampleUserResponse;
@@ -38,7 +46,7 @@ public class UserControllerTest {
     @BeforeEach
     void setUp() {
         mockMvc = MockMvcBuilders
-                .standaloneSetup(new UserController(userService))
+                .standaloneSetup(new UserController(userService, authenticationManager, jwtTokenProvider))
                 .build();
 
         sampleUserResponse = UserResponseDto.builder()
