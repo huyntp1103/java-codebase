@@ -15,7 +15,6 @@ import java.util.function.Function;
 
 @Component
 public class JwtTokenProvider {
-    // TODO: Update the secret key and expiration time in application.properties
     @Value("${jwt.secret:blogapisecretkeyfortestingpurposesonly}")
     private String jwtSecret;
 
