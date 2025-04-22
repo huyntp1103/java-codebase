@@ -13,14 +13,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/posts")
-//@RequiredArgsConstructor
+@RequiredArgsConstructor
 public class PostController {
     private final PostService postService;
 
-    PostController(PostService postService) {
-        this.postService = postService;
-    }
-
+    // TODO: get userId from JWT token instead of path variable
     @PostMapping("/users/{userId}")
     public ResponseEntity<PostResponseDto> createPost(
             @PathVariable Long userId,

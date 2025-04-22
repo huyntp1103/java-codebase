@@ -26,5 +26,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 user.getPassword(),
                 Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"))
         );
+        // TODO: Create enum for roles, add admin role
     }
 }
