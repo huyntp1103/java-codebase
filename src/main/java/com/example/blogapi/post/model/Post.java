@@ -26,6 +26,9 @@ public class Post {
     @Column(nullable = false, length = 5000)
     private String content;
 
+    @Column(name = "is_published", nullable = false)
+    private boolean isPublished = false;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User author;

@@ -15,4 +15,5 @@ public class PostResponseDto {
     private UserResponseDto author;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private boolean isPublished;
 }
